@@ -27,8 +27,6 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 func getUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	// В реальном случае парсили бы id из URL
-	// Здесь просто пример для пользователя с ID=1
 	for _, u := range users {
 		if u.ID == 1 {
 			json.NewEncoder(w).Encode(u)
@@ -40,7 +38,6 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// Роутинг
 	http.HandleFunc("/users", getUsers)
 	http.HandleFunc("/users/1", getUser) 
 
